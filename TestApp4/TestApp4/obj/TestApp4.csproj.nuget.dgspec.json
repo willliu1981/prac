@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\YIN\\source\\repos\\willliu1981\\Prac\\TestApp4\\TestApp4\\TestApp4.csproj": {}
+    "C:\\Users\\YIN\\Source\\Repos\\prac\\TestApp4\\TestApp4\\TestApp4.csproj": {}
   },
   "projects": {
-    "C:\\Users\\YIN\\source\\repos\\willliu1981\\Prac\\TestApp4\\TestApp4\\TestApp4.csproj": {
+    "C:\\Users\\YIN\\Source\\Repos\\prac\\TestApp4\\TestApp4\\TestApp4.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\YIN\\source\\repos\\willliu1981\\Prac\\TestApp4\\TestApp4\\TestApp4.csproj",
+        "projectUniqueName": "C:\\Users\\YIN\\Source\\Repos\\prac\\TestApp4\\TestApp4\\TestApp4.csproj",
         "projectName": "TestApp4",
-        "projectPath": "C:\\Users\\YIN\\source\\repos\\willliu1981\\Prac\\TestApp4\\TestApp4\\TestApp4.csproj",
+        "projectPath": "C:\\Users\\YIN\\Source\\Repos\\prac\\TestApp4\\TestApp4\\TestApp4.csproj",
         "packagesPath": "C:\\Users\\YIN\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\YIN\\source\\repos\\willliu1981\\Prac\\TestApp4\\TestApp4\\obj\\",
+        "outputPath": "C:\\Users\\YIN\\Source\\Repos\\prac\\TestApp4\\TestApp4\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\YIN\\AppData\\Roaming\\NuGet\\NuGet.Config",

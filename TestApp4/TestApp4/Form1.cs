@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -22,13 +23,21 @@ namespace TestApp4
             InitializeComponent();
             InitComponentXml();
 
-            txtMsg.Text = "test: " + root.SelectNodes("ComponentArray").Item(1).Attributes.GetNamedItem("name").Value;
+            txtMsg.Text = "test: " + root.SelectNodes("ComponentArray").Item(0).Attributes.GetNamedItem("name").Value;
+            
+            txtMsg2.Text = "test: " + Directory.GetCurrentDirectory();
+            txtMsg2.Text = "test: " + Application.StartupPath;
         }
 
         private void InitComponentXml()
         {
             xmldoc.Load(appRoot + @"\configs\ComponentManager.xml");
             root = xmldoc.SelectNodes("ComponentManager/Components").Item(0);
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
