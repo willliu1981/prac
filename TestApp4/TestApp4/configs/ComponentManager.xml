@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ComponentManager>
+	<Components>
+		<ComponentArray name="week">
+			<Conponent id="1" order="1" tag=""/>
+			<Conponent id="2" order="2" tag=""/>
+		</ComponentArray>
+
+		<ComponentArray name="date">
+			<Conponent id="1" order="1" tag=""/>
+			<Conponent id="2" order="2" tag=""/>
+		</ComponentArray>
+
+	</Components>
+
+
+
+
+</ComponentManager>

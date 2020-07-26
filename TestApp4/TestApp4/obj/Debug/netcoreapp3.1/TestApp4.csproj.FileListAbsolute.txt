@@ -1,0 +1,15 @@
+C:\Users\YIN\source\repos\willliu1981\Prac\TestApp4\TestApp4\bin\Debug\netcoreapp3.1\TestApp4.exe
+C:\Users\YIN\source\repos\willliu1981\Prac\TestApp4\TestApp4\bin\Debug\netcoreapp3.1\TestApp4.deps.json
+C:\Users\YIN\source\repos\willliu1981\Prac\TestApp4\TestApp4\bin\Debug\netcoreapp3.1\TestApp4.runtimeconfig.json
+C:\Users\YIN\source\repos\willliu1981\Prac\TestApp4\TestApp4\bin\Debug\netcoreapp3.1\TestApp4.runtimeconfig.dev.json
+C:\Users\YIN\source\repos\willliu1981\Prac\TestApp4\TestApp4\bin\Debug\netcoreapp3.1\TestApp4.dll
+C:\Users\YIN\source\repos\willliu1981\Prac\TestApp4\TestApp4\bin\Debug\netcoreapp3.1\TestApp4.pdb
+C:\Users\YIN\source\repos\willliu1981\Prac\TestApp4\TestApp4\obj\Debug\netcoreapp3.1\TestApp4.csprojAssemblyReference.cache
+C:\Users\YIN\source\repos\willliu1981\Prac\TestApp4\TestApp4\obj\Debug\netcoreapp3.1\TestApp4.Form1.resources
+C:\Users\YIN\source\repos\willliu1981\Prac\TestApp4\TestApp4\obj\Debug\netcoreapp3.1\TestApp4.csproj.GenerateResource.cache
+C:\Users\YIN\source\repos\willliu1981\Prac\TestApp4\TestApp4\obj\Debug\netcoreapp3.1\TestApp4.AssemblyInfoInputs.cache
+C:\Users\YIN\source\repos\willliu1981\Prac\TestApp4\TestApp4\obj\Debug\netcoreapp3.1\TestApp4.AssemblyInfo.cs
+C:\Users\YIN\source\repos\willliu1981\Prac\TestApp4\TestApp4\obj\Debug\netcoreapp3.1\TestApp4.csproj.CoreCompileInputs.cache
+C:\Users\YIN\source\repos\willliu1981\Prac\TestApp4\TestApp4\obj\Debug\netcoreapp3.1\TestApp4.dll
+C:\Users\YIN\source\repos\willliu1981\Prac\TestApp4\TestApp4\obj\Debug\netcoreapp3.1\TestApp4.pdb
+C:\Users\YIN\source\repos\willliu1981\Prac\TestApp4\TestApp4\obj\Debug\netcoreapp3.1\TestApp4.genruntimeconfig.cache
