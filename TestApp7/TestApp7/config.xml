@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8" ?> 
+<CM>
+	<ball>
+		<tag id="b1" order="1"></tag>
+		<tag id="b2" order="2"></tag>
+		<tag id="b3" order="3"></tag>
+		<tag id="b4" order="4"></tag>
+		<tag id="b5" order="5"></tag>
+		<tag id="b6" order="6"></tag>
+	</ball>
+	
+</CM>
+

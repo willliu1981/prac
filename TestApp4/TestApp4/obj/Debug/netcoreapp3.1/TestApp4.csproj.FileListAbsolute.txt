@@ -20,7 +20,6 @@ C:\Users\YIN\Source\Repos\prac\TestApp4\TestApp4\bin\Debug\netcoreapp3.1\TestApp
 C:\Users\YIN\Source\Repos\prac\TestApp4\TestApp4\bin\Debug\netcoreapp3.1\TestApp4.dll
 C:\Users\YIN\Source\Repos\prac\TestApp4\TestApp4\bin\Debug\netcoreapp3.1\TestApp4.pdb
 C:\Users\YIN\Source\Repos\prac\TestApp4\TestApp4\obj\Debug\netcoreapp3.1\TestApp4.csprojAssemblyReference.cache
-C:\Users\YIN\Source\Repos\prac\TestApp4\TestApp4\obj\Debug\netcoreapp3.1\TestApp4.Form1.resources
 C:\Users\YIN\Source\Repos\prac\TestApp4\TestApp4\obj\Debug\netcoreapp3.1\TestApp4.csproj.GenerateResource.cache
 C:\Users\YIN\Source\Repos\prac\TestApp4\TestApp4\obj\Debug\netcoreapp3.1\TestApp4.AssemblyInfoInputs.cache
 C:\Users\YIN\Source\Repos\prac\TestApp4\TestApp4\obj\Debug\netcoreapp3.1\TestApp4.AssemblyInfo.cs
@@ -28,3 +27,5 @@ C:\Users\YIN\Source\Repos\prac\TestApp4\TestApp4\obj\Debug\netcoreapp3.1\TestApp
 C:\Users\YIN\Source\Repos\prac\TestApp4\TestApp4\obj\Debug\netcoreapp3.1\TestApp4.dll
 C:\Users\YIN\Source\Repos\prac\TestApp4\TestApp4\obj\Debug\netcoreapp3.1\TestApp4.pdb
 C:\Users\YIN\Source\Repos\prac\TestApp4\TestApp4\obj\Debug\netcoreapp3.1\TestApp4.genruntimeconfig.cache
+C:\Users\YIN\Source\Repos\prac\TestApp4\TestApp4\bin\Debug\netcoreapp3.1\configs\ComponentManager.xml
+C:\Users\YIN\source\repos\prac\TestApp4\TestApp4\obj\Debug\netcoreapp3.1\TestApp4.Book.resources

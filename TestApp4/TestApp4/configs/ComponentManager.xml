@@ -2,13 +2,13 @@
 <ComponentManager>
 	<Components>
 		<ComponentArray name="week">
-			<Conponent id="1" order="1" tag=""/>
-			<Conponent id="2" order="2" tag=""/>
+			<Component id="1" order="1" tag=""/>
+			<Component id="2" order="2" tag=""/>
 		</ComponentArray>
 
 		<ComponentArray name="date">
-			<Conponent id="1" order="1" tag=""/>
-			<Conponent id="2" order="2" tag=""/>
+			<Component id="1" order="1" tag=""/>
+			<Component id="2" order="2" tag=""/>
 		</ComponentArray>
 
 	</Components>
