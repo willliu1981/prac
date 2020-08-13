@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.lstAuthor = new System.Windows.Forms.ListBox();
             this.btnBookDelete = new System.Windows.Forms.Button();
             this.btnBookEdit = new System.Windows.Forms.Button();
             this.txtBookIndex = new System.Windows.Forms.TextBox();
@@ -37,7 +38,6 @@
             this.label8 = new System.Windows.Forms.Label();
             this.txtPrice = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
-            this.txtAuthor = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.txtTitle = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
@@ -46,6 +46,7 @@
             this.lblBook = new System.Windows.Forms.Label();
             this.lblAuthor = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.lstPhone = new System.Windows.Forms.ListBox();
             this.button5 = new System.Windows.Forms.Button();
             this.label9 = new System.Windows.Forms.Label();
             this.button6 = new System.Windows.Forms.Button();
@@ -54,12 +55,13 @@
             this.txtEmail = new System.Windows.Forms.TextBox();
             this.button7 = new System.Windows.Forms.Button();
             this.button8 = new System.Windows.Forms.Button();
-            this.txtPhone = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
             this.txtName = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
             this.lblPhone = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.label11 = new System.Windows.Forms.Label();
+            this.txtTag = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.button2 = new System.Windows.Forms.Button();
@@ -76,8 +78,7 @@
             this.panel4 = new System.Windows.Forms.Panel();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
-            this.txtTag = new System.Windows.Forms.TextBox();
+            this.button9 = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -87,6 +88,7 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.panel1.Controls.Add(this.lstAuthor);
             this.panel1.Controls.Add(this.btnBookDelete);
             this.panel1.Controls.Add(this.btnBookEdit);
             this.panel1.Controls.Add(this.txtBookIndex);
@@ -95,7 +97,6 @@
             this.panel1.Controls.Add(this.label8);
             this.panel1.Controls.Add(this.txtPrice);
             this.panel1.Controls.Add(this.label7);
-            this.panel1.Controls.Add(this.txtAuthor);
             this.panel1.Controls.Add(this.label6);
             this.panel1.Controls.Add(this.txtTitle);
             this.panel1.Controls.Add(this.label5);
@@ -105,6 +106,16 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(504, 336);
             this.panel1.TabIndex = 0;
+            // 
+            // lstAuthor
+            // 
+            this.lstAuthor.Font = new System.Drawing.Font("新細明體", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.lstAuthor.FormattingEnabled = true;
+            this.lstAuthor.ItemHeight = 24;
+            this.lstAuthor.Location = new System.Drawing.Point(97, 204);
+            this.lstAuthor.Name = "lstAuthor";
+            this.lstAuthor.Size = new System.Drawing.Size(152, 28);
+            this.lstAuthor.TabIndex = 17;
             // 
             // btnBookDelete
             // 
@@ -135,9 +146,10 @@
             this.txtBookIndex.Name = "txtBookIndex";
             this.txtBookIndex.Size = new System.Drawing.Size(52, 36);
             this.txtBookIndex.TabIndex = 14;
+            this.txtBookIndex.Tag = "book";
             this.txtBookIndex.Text = "1";
             this.txtBookIndex.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.txtBookIndex.TextChanged += new System.EventHandler(this.txtBookIndex_TextChanged);
+            this.txtBookIndex.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TextBoxEnterDown);
             // 
             // btnNext
             // 
@@ -180,7 +192,7 @@
             this.txtPrice.Font = new System.Drawing.Font("新細明體", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.txtPrice.Location = new System.Drawing.Point(97, 257);
             this.txtPrice.Name = "txtPrice";
-            this.txtPrice.Size = new System.Drawing.Size(100, 30);
+            this.txtPrice.Size = new System.Drawing.Size(152, 30);
             this.txtPrice.TabIndex = 10;
             // 
             // label7
@@ -194,14 +206,6 @@
             this.label7.Tag = "";
             this.label7.Text = "Author";
             this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // txtAuthor
-            // 
-            this.txtAuthor.Font = new System.Drawing.Font("新細明體", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.txtAuthor.Location = new System.Drawing.Point(97, 199);
-            this.txtAuthor.Name = "txtAuthor";
-            this.txtAuthor.Size = new System.Drawing.Size(100, 30);
-            this.txtAuthor.TabIndex = 8;
             // 
             // label6
             // 
@@ -220,7 +224,7 @@
             this.txtTitle.Font = new System.Drawing.Font("新細明體", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.txtTitle.Location = new System.Drawing.Point(97, 139);
             this.txtTitle.Name = "txtTitle";
-            this.txtTitle.Size = new System.Drawing.Size(100, 30);
+            this.txtTitle.Size = new System.Drawing.Size(152, 30);
             this.txtTitle.TabIndex = 6;
             // 
             // label5
@@ -240,7 +244,7 @@
             this.txtNo.Font = new System.Drawing.Font("新細明體", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.txtNo.Location = new System.Drawing.Point(97, 82);
             this.txtNo.Name = "txtNo";
-            this.txtNo.Size = new System.Drawing.Size(100, 30);
+            this.txtNo.Size = new System.Drawing.Size(152, 30);
             this.txtNo.TabIndex = 4;
             // 
             // label1
@@ -285,6 +289,7 @@
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.panel2.Controls.Add(this.lstPhone);
             this.panel2.Controls.Add(this.button5);
             this.panel2.Controls.Add(this.label9);
             this.panel2.Controls.Add(this.button6);
@@ -293,7 +298,6 @@
             this.panel2.Controls.Add(this.txtEmail);
             this.panel2.Controls.Add(this.button7);
             this.panel2.Controls.Add(this.button8);
-            this.panel2.Controls.Add(this.txtPhone);
             this.panel2.Controls.Add(this.label10);
             this.panel2.Controls.Add(this.txtName);
             this.panel2.Controls.Add(this.label12);
@@ -302,6 +306,16 @@
             this.panel2.Size = new System.Drawing.Size(504, 336);
             this.panel2.TabIndex = 1;
             this.panel2.Visible = false;
+            // 
+            // lstPhone
+            // 
+            this.lstPhone.Font = new System.Drawing.Font("新細明體", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.lstPhone.FormattingEnabled = true;
+            this.lstPhone.ItemHeight = 24;
+            this.lstPhone.Location = new System.Drawing.Point(109, 144);
+            this.lstPhone.Name = "lstPhone";
+            this.lstPhone.Size = new System.Drawing.Size(152, 28);
+            this.lstPhone.TabIndex = 18;
             // 
             // button5
             // 
@@ -335,7 +349,7 @@
             this.button6.TabIndex = 29;
             this.button6.Text = "Add";
             this.button6.UseVisualStyleBackColor = true;
-            this.button6.Click += new System.EventHandler(this.button6_Click);
+            this.button6.Click += new System.EventHandler(this.AuthorAdd_Click);
             // 
             // label2
             // 
@@ -356,16 +370,17 @@
             this.txtAuthorIndex.Name = "txtAuthorIndex";
             this.txtAuthorIndex.Size = new System.Drawing.Size(52, 30);
             this.txtAuthorIndex.TabIndex = 28;
+            this.txtAuthorIndex.Tag = "author";
             this.txtAuthorIndex.Text = "1";
             this.txtAuthorIndex.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.txtAuthorIndex.TextChanged += new System.EventHandler(this.txtAuthorIndex_TextChanged);
+            this.txtAuthorIndex.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TextBoxEnterDown);
             // 
             // txtEmail
             // 
             this.txtEmail.Font = new System.Drawing.Font("新細明體", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.txtEmail.Location = new System.Drawing.Point(109, 202);
             this.txtEmail.Name = "txtEmail";
-            this.txtEmail.Size = new System.Drawing.Size(100, 30);
+            this.txtEmail.Size = new System.Drawing.Size(152, 30);
             this.txtEmail.TabIndex = 18;
             // 
             // button7
@@ -392,14 +407,6 @@
             this.button8.UseVisualStyleBackColor = true;
             this.button8.Click += new System.EventHandler(this.BtnAuthorScroll_Click);
             // 
-            // txtPhone
-            // 
-            this.txtPhone.Font = new System.Drawing.Font("新細明體", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.txtPhone.Location = new System.Drawing.Point(109, 144);
-            this.txtPhone.Name = "txtPhone";
-            this.txtPhone.Size = new System.Drawing.Size(100, 30);
-            this.txtPhone.TabIndex = 16;
-            // 
             // label10
             // 
             this.label10.BackColor = System.Drawing.SystemColors.ControlLight;
@@ -417,7 +424,7 @@
             this.txtName.Font = new System.Drawing.Font("新細明體", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.txtName.Location = new System.Drawing.Point(109, 87);
             this.txtName.Name = "txtName";
-            this.txtName.Size = new System.Drawing.Size(100, 30);
+            this.txtName.Size = new System.Drawing.Size(152, 30);
             this.txtName.TabIndex = 12;
             // 
             // label12
@@ -468,6 +475,26 @@
             this.panel3.TabIndex = 5;
             this.panel3.Visible = false;
             // 
+            // label11
+            // 
+            this.label11.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.label11.Font = new System.Drawing.Font("新細明體", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.label11.Location = new System.Drawing.Point(48, 98);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(57, 39);
+            this.label11.TabIndex = 27;
+            this.label11.Tag = "";
+            this.label11.Text = "Tag";
+            this.label11.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // txtTag
+            // 
+            this.txtTag.Font = new System.Drawing.Font("新細明體", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.txtTag.Location = new System.Drawing.Point(123, 98);
+            this.txtTag.Name = "txtTag";
+            this.txtTag.Size = new System.Drawing.Size(152, 30);
+            this.txtTag.TabIndex = 26;
+            // 
             // button1
             // 
             this.button1.Font = new System.Drawing.Font("新細明體", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
@@ -500,14 +527,14 @@
             this.button2.TabIndex = 20;
             this.button2.Text = "Add";
             this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.button2.Click += new System.EventHandler(this.PhoneAdd_Click);
             // 
             // txtOfficePhone
             // 
             this.txtOfficePhone.Font = new System.Drawing.Font("新細明體", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.txtOfficePhone.Location = new System.Drawing.Point(123, 213);
             this.txtOfficePhone.Name = "txtOfficePhone";
-            this.txtOfficePhone.Size = new System.Drawing.Size(100, 30);
+            this.txtOfficePhone.Size = new System.Drawing.Size(152, 30);
             this.txtOfficePhone.TabIndex = 22;
             // 
             // txtPhoneIndex
@@ -517,16 +544,17 @@
             this.txtPhoneIndex.Name = "txtPhoneIndex";
             this.txtPhoneIndex.Size = new System.Drawing.Size(52, 30);
             this.txtPhoneIndex.TabIndex = 19;
+            this.txtPhoneIndex.Tag = "phone";
             this.txtPhoneIndex.Text = "1";
             this.txtPhoneIndex.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.txtPhoneIndex.TextChanged += new System.EventHandler(this.txtPhoneIndex_TextChanged);
+            this.txtPhoneIndex.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TextBoxEnterDown);
             // 
             // txtCellPhone
             // 
             this.txtCellPhone.Font = new System.Drawing.Font("新細明體", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.txtCellPhone.Location = new System.Drawing.Point(123, 273);
             this.txtCellPhone.Name = "txtCellPhone";
-            this.txtCellPhone.Size = new System.Drawing.Size(100, 30);
+            this.txtCellPhone.Size = new System.Drawing.Size(152, 30);
             this.txtCellPhone.TabIndex = 24;
             // 
             // button3
@@ -595,7 +623,7 @@
             this.txtHomePhone.Font = new System.Drawing.Font("新細明體", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.txtHomePhone.Location = new System.Drawing.Point(123, 156);
             this.txtHomePhone.Name = "txtHomePhone";
-            this.txtHomePhone.Size = new System.Drawing.Size(100, 30);
+            this.txtHomePhone.Size = new System.Drawing.Size(152, 30);
             this.txtHomePhone.TabIndex = 20;
             // 
             // lblAnchorFormRightBottom
@@ -641,25 +669,16 @@
             this.label4.Text = "Info";
             this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // label11
+            // button9
             // 
-            this.label11.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.label11.Font = new System.Drawing.Font("新細明體", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.label11.Location = new System.Drawing.Point(48, 98);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(57, 39);
-            this.label11.TabIndex = 27;
-            this.label11.Tag = "";
-            this.label11.Text = "Tag";
-            this.label11.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // txtTag
-            // 
-            this.txtTag.Font = new System.Drawing.Font("新細明體", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.txtTag.Location = new System.Drawing.Point(123, 98);
-            this.txtTag.Name = "txtTag";
-            this.txtTag.Size = new System.Drawing.Size(100, 30);
-            this.txtTag.TabIndex = 26;
+            this.button9.Font = new System.Drawing.Font("新細明體", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.button9.Location = new System.Drawing.Point(431, 19);
+            this.button9.Name = "button9";
+            this.button9.Size = new System.Drawing.Size(117, 44);
+            this.button9.TabIndex = 7;
+            this.button9.Text = "Debug";
+            this.button9.UseVisualStyleBackColor = true;
+            this.button9.Click += new System.EventHandler(this.Debug_Click);
             // 
             // Form1
             // 
@@ -667,6 +686,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlDarkDark;
             this.ClientSize = new System.Drawing.Size(1210, 836);
+            this.Controls.Add(this.button9);
             this.Controls.Add(this.panel4);
             this.Controls.Add(this.lblAnchorFormRightBottom);
             this.Controls.Add(this.panel3);
@@ -708,7 +728,6 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.TextBox txtPrice;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.TextBox txtAuthor;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox txtTitle;
         private System.Windows.Forms.Label label5;
@@ -725,7 +744,6 @@
         private System.Windows.Forms.TextBox txtEmail;
         private System.Windows.Forms.Button button7;
         private System.Windows.Forms.Button button8;
-        private System.Windows.Forms.TextBox txtPhone;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.TextBox txtName;
         private System.Windows.Forms.Label label12;
@@ -742,6 +760,9 @@
         private System.Windows.Forms.TextBox txtHomePhone;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.TextBox txtTag;
+        private System.Windows.Forms.ListBox lstAuthor;
+        private System.Windows.Forms.Button button9;
+        private System.Windows.Forms.ListBox lstPhone;
     }
 }
 

@@ -16,7 +16,7 @@ namespace chapter9example3and4
             get { return Instance.Count; }
         }
         private static Dictionary<Int16, Book> _instance;
-        private static Dictionary<Int16, Book> Instance
+        public static Dictionary<Int16, Book> Instance
         {
             get
             {
@@ -97,12 +97,12 @@ namespace chapter9example3and4
             if (!Instance.TryGetValue(index, out book))
             {
                 book = new Book();
+                Instance.Add(index, book);
             }
             book.No = no;
             book.Title = title;
             book.Author = author;
             book.Price = price;
-            Instance.Add(index, book);
         }
 
         public static void RemoveBook(short index)

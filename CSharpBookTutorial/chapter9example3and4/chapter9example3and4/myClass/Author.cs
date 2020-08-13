@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Diagnostics;
+using System.Linq;
 
 namespace chapter9example3and4
 {
@@ -11,7 +13,7 @@ namespace chapter9example3and4
             get { return Instance.Count; }
         }
         private static Dictionary<Int16, Author> _instance;
-        private static Dictionary<Int16, Author> Instance
+        public  static Dictionary<Int16, Author> Instance
         {
             get
             {
@@ -71,11 +73,11 @@ namespace chapter9example3and4
             if (!Instance.TryGetValue(index, out author))
             {
                 author = new Author();
+                Instance.Add(index, author);
             }
             author.Name = name;
             author.Phone = phone;
             author.Email = email;
-            Instance.Add(index, author);
         }
 
         public static void RemoveAuthor(short index)
@@ -91,6 +93,23 @@ namespace chapter9example3and4
             return new Author();
         }
 
+        public static BindingList<Author> ToBindingList()
+        {
+            ////BindingList<Author> list = new BindingList<Author>(Instance.ToList<Author>());
+            //Dictionary<int, int> dic = new Dictionary<int, int>();
+            //dic.ToList<KeyValuePair<int, int>>();
+
+            //list.Clear();
+            //List<Author> myList = Instance.Values;
+
+            //return Instance
+            return null;
+        }
+
+        public override string ToString()
+        {
+            return this.Name;
+        }
     }
 }
 

@@ -10,7 +10,7 @@ namespace chapter9example3and4
             get { return Instance.Count; }
         }
         private static Dictionary<Int16, Phone> _instance;
-        private static Dictionary<Int16, Phone> Instance
+        public static Dictionary<Int16, Phone> Instance
         {
             get
             {
@@ -75,12 +75,12 @@ namespace chapter9example3and4
             if (!Instance.TryGetValue(index, out phone))
             {
                 phone = new Phone();
+                Instance.Add(index, phone);
             }
             phone.Tag = tag;
             phone.HomrPhone = home;
             phone.OfficePhone = office;
             phone.CellPhone = cellphone;
-            Instance.Add(index, phone);
         }
 
         public static void RemovePhone(short index)
@@ -94,6 +94,10 @@ namespace chapter9example3and4
         public static Phone CreateEmptyInstance()
         {
             return new Phone();
+        }
+        public override string ToString()
+        {
+            return this.HomrPhone;
         }
     }
 }
