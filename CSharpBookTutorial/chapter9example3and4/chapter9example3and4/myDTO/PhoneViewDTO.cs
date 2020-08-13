@@ -30,6 +30,15 @@ namespace chapter9example3and4.myDTO
                 TxtOfficePhone.Text.ToString(), TxtCellPhone.Text.ToString());
             BindingList.ResetBindings();
         }
+        public void RemoveData()
+        {
+            short index = TransformIndex(TxtIndex, true);
+            if (index != -1)
+            {
+                Phone.RemovePhone(index);
+            }
+        }
+
         public void SetTextBoxDataInfo()
         {
             short index = TransformIndex(TxtIndex);

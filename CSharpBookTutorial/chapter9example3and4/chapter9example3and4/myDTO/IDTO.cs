@@ -7,5 +7,6 @@
         void ArrayIndexTextBoxAutoResize( short offset);
         void SetTextBoxDataInfo();
         void SetData();
+        void RemoveData();
     }
 }

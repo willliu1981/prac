@@ -23,6 +23,14 @@ namespace chapter9example3and4.myDTO
             Author.SetAuthor(TransformIndex(TxtIndex), TxtName.Text.ToString(),phone, TxtEmail.Text.ToString());
             BindingList.ResetBindings();
         }
+        public void RemoveData()
+        {
+            short index = TransformIndex(TxtIndex, true);
+            if (index != -1)
+            {
+                Author.RemoveAuthor(index);
+            }
+        }
         public void SetTextBoxDataInfo()
         {
             short index = TransformIndex(TxtIndex);

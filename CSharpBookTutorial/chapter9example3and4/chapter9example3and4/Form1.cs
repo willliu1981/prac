@@ -18,8 +18,8 @@ namespace chapter9example3and4
         Label[] myAnchor;
         Panel[] myPanel;
         Label[] myLabel;
-       
-        
+
+
         public Form1()
         {
             InitializeComponent();
@@ -28,21 +28,18 @@ namespace chapter9example3and4
 
         private void MyInit()
         {
-            TextBoxIndexAutoSize(1, Book.Max, txtBookIndex, View.Book);
-            TextBoxIndexAutoSize(1, Author.Max, txtAuthorIndex, View.Author);
-            TextBoxIndexAutoSize(1, Phone.Max, txtPhoneIndex, View.Phone);
-            BindingList<KeyValuePair<short, Author>> blstAuthor 
+            BindingList<KeyValuePair<short, Author>> blstAuthor
                 = new BindingList<KeyValuePair<short, Author>>(Author.Instance.ToList<KeyValuePair<short, Author>>());
             lstAuthor.DisplayMember = "Value";
             lstAuthor.DataSource = blstAuthor;
-            BindingList<KeyValuePair<short, Phone>> blstPhone 
+            BindingList<KeyValuePair<short, Phone>> blstPhone
                 = new BindingList<KeyValuePair<short, Phone>>(Phone.Instance.ToList<KeyValuePair<short, Phone>>());
             lstPhone.DisplayMember = "Value";
             lstPhone.DataSource = blstPhone;
             DTOFactory.CreateDTO(
                 new KeyValuePair<View, IDTO>(View.Book, new BookViewDTO(txtBookIndex, txtNo, txtTitle, txtPrice)),
                 new KeyValuePair<View, IDTO>(View.Author, new AuthorViewDTO(txtAuthorIndex, txtName, txtEmail, blstAuthor)),
-                new KeyValuePair<View, IDTO>(View.Phone, new PhoneViewDTO(txtPhoneIndex, txtTag, txtHomePhone, 
+                new KeyValuePair<View, IDTO>(View.Phone, new PhoneViewDTO(txtPhoneIndex, txtTag, txtHomePhone,
                 txtOfficePhone, txtCellPhone, blstPhone)));
             myAnchor = new[] { lblAnchorFormRightBottom };
             this.SetClientSizeCore(myAnchor[0].Left, myAnchor[0].Top);
@@ -56,7 +53,7 @@ namespace chapter9example3and4
             backColorLostFocus = myLabel[1].BackColor;
             foreColorFocus = myLabel[0].ForeColor;
             foreColorLostFocus = myLabel[1].ForeColor;
-            InitPanelProperty(0);
+            RefreshPanelProperty(0);
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -64,7 +61,7 @@ namespace chapter9example3and4
 
         }
 
-        private void InitPanelProperty(int index)
+        private void RefreshPanelProperty(int index)
         {
             for (int i = 0; i < myLabel.Length; i++)
             {
@@ -83,19 +80,19 @@ namespace chapter9example3and4
             }
         }
 
-        private void MyButton_Click(object sender, EventArgs e)
+        private void BtnTitle_Click(object sender, EventArgs e)
         {
             string tag = (sender as Label).Tag.ToString();
             switch (tag)
             {
                 case "book":
-                    InitPanelProperty(0);
+                    RefreshPanelProperty(0);
                     break;
                 case "author":
-                    InitPanelProperty(1);
+                    RefreshPanelProperty(1);
                     break;
                 case "phone":
-                    InitPanelProperty(2);
+                    RefreshPanelProperty(2);
                     break;
                 default:
                     break;
@@ -104,49 +101,30 @@ namespace chapter9example3and4
 
         private void BookAdd_Click(object sender, EventArgs e)
         {
-            //short index = TransformIndex(txtBookIndex.Text.ToString());
-            //Author author = Author.GetAuthor(1);
-            //Book.SetBook(index, txtNo.Text.ToString(), txtTitle.Text.ToString(), author, txtPrice.Text.ToString());
             DTOFactory.GetDTO(View.Book).SetData();
         }
         private void AuthorAdd_Click(object sender, EventArgs e)
         {
-            //short index = TransformIndex(txtAuthorIndex.Text.ToString());
-            //Phone phone = Phone.GetPhone(1);
-            //Author.SetAuthor(index, txtName.Text.ToString(), phone, txtEmail.Text.ToString());
-            //blstAuthor.ResetBindings();
             DTOFactory.GetDTO(View.Author).SetData();
         }
         private void PhoneAdd_Click(object sender, EventArgs e)
         {
-            //short index = TransformIndex(txtPhoneIndex.Text.ToString());
-            //Phone.SetPhone(index, txtTag.Text.ToString(), txtHomePhone.Text.ToString(),
-            //    txtOfficePhone.Text.ToString(), txtCellPhone.Text.ToString());
-            //blstPhone.ResetBindings();
             DTOFactory.GetDTO(View.Phone).SetData();
         }
 
         private void BookDelete_Click(object sender, EventArgs e)
         {
-            short index = TransformIndex(txtBookIndex.Text.ToString());
-            Book.RemoveBook(index);
-            TextBoxIndexAutoSize(index, Book.Max, txtBookIndex, View.Book);
+            DTOFactory.GetDTO(View.Book).RemoveData();
         }
-        private void button5_Click(object sender, EventArgs e)
+        private void AuthorDelete5_Click(object sender, EventArgs e)
         {
-            short index = TransformIndex(txtAuthorIndex.Text.ToString());
-            Author.RemoveAuthor(index);
-            TextBoxIndexAutoSize(index, Author.Max, txtAuthorIndex, View.Author);
+            DTOFactory.GetDTO(View.Author).RemoveData();
         }
 
-
-        private void button1_Click(object sender, EventArgs e)
+        private void PhoneDelete_Click(object sender, EventArgs e)
         {
-            short index = TransformIndex(txtPhoneIndex.Text.ToString());
-            Phone.RemovePhone(index);
-            TextBoxIndexAutoSize(index, Phone.Max, txtPhoneIndex, View.Phone);
+            DTOFactory.GetDTO(View.Phone).RemoveData();
         }
-
 
         private void BtnScroll_Click(object sender, EventArgs e, View view)
         {
@@ -190,7 +168,7 @@ namespace chapter9example3and4
         {
             if (e.KeyCode == Keys.Enter)
             {
-                switch((sender as TextBox).Tag)
+                switch ((sender as TextBox).Tag)
                 {
                     case "book":
                         DTOFactory.GetDTO(View.Book).SetTextBoxDataInfo();
@@ -228,66 +206,9 @@ namespace chapter9example3and4
             return index;
         }
 
-        private void TextBoxIndexAutoSize(Int16 targetIdx, int max, TextBox oriTxetBox, View view)
-        {
-            if (oriTxetBox != null)
-            {
-                if (targetIdx < 1)
-                {
-                    targetIdx = 1;
-                    oriTxetBox.Text = targetIdx.ToString();
-                }
-                if (targetIdx > max)
-                {
-                    targetIdx = Convert.ToInt16(max + 1);
-                }
-                oriTxetBox.Text = targetIdx.ToString();
-                switch (view)
-                {
-                    case View.Book:
-                        SetBookInfo(targetIdx);
-                        break;
-                    case View.Author:
-                        SetAuhtorInfo(targetIdx);
-                        break;
-                    case View.Phone:
-                        SetPhoneInfo(targetIdx);
-                        break;
-                    default:
-                        break;
-                }
-            }
-        }
-
-        private void SetPhoneInfo(short index)
-        {
-            //txtTag.Text = Phone.GetPhone(index).Tag;
-            //txtHomePhone.Text = Phone.GetPhone(index).HomrPhone;
-            //txtOfficePhone.Text = Phone.GetPhone(index).OfficePhone;
-            //txtCellPhone.Text = Phone.GetPhone(index).CellPhone;
-        }
-
-        private void SetAuhtorInfo(short index)
-        {
-            //txtName.Text = Author.GetAuthor(index).Name;
-            //txtPhone.Text = Author.GetAuthor(index).Phone.OfficePhone;
-            //txtEmail.Text = Author.GetAuthor(index).Email;
-        }
-
-        private void SetBookInfo(Int16 index)
-        {
-            //txtNo.Text = Book.GetBook(index).No;
-            //txtTitle.Text = Book.GetBook(index).Title;
-            //txtAuthor.Text = Book.GetBook(index).Author.Name;
-            //txtPrice.Text = Book.GetBook(index).Price.ToString();
-        }
-
         private void Debug_Click(object sender, EventArgs e)
         {
-            //Author.SetAuthor(1, "Mark", Phone.GetPhone(1), "2222");
-            //Debug.WriteLine("test: " + Author.GetAuthor(1).Name);
-            //Debug.WriteLine("test: " + blstAuthor[0].Value.Name);
-            //blstAuthor.ResetBindings();
+
         }
 
 

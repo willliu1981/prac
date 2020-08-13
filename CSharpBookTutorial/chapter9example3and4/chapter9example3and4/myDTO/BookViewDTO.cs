@@ -29,7 +29,19 @@ namespace chapter9example3and4
         public void SetData()
         {
             Author author = Author.GetAuthor(1);//for debug
-            Book.SetBook(TransformIndex(TxtIndex), TxtNo.Text.ToString(), TxtTitle.Text.ToString(), author, TxtPrice.Text.ToString());
+            short index = TransformIndex(TxtIndex, true);
+            if (index != -1)
+            {
+                Book.SetBook(index, TxtNo.Text.ToString(), TxtTitle.Text.ToString(), author, TxtPrice.Text.ToString());
+            }
+        }
+        public void RemoveData()
+        {
+            short index = TransformIndex(TxtIndex, true);
+            if (index != -1)
+            {
+                Book.RemoveBook(index);
+            }
         }
 
         public void SetTextBoxDataInfo()
@@ -40,6 +52,8 @@ namespace chapter9example3and4
             //lstAuthor.Text = Book.GetBook(index).Author.Name;
             TxtPrice.Text = Book.GetBook(index).Price.ToString();
         }
+
+
     }
 
 }

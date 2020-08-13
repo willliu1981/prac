@@ -270,7 +270,7 @@
             this.lblBook.Tag = "book";
             this.lblBook.Text = "Book";
             this.lblBook.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.lblBook.Click += new System.EventHandler(this.MyButton_Click);
+            this.lblBook.Click += new System.EventHandler(this.BtnTitle_Click);
             // 
             // lblAuthor
             // 
@@ -284,7 +284,7 @@
             this.lblAuthor.Tag = "author";
             this.lblAuthor.Text = "Author";
             this.lblAuthor.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.lblAuthor.Click += new System.EventHandler(this.MyButton_Click);
+            this.lblAuthor.Click += new System.EventHandler(this.BtnTitle_Click);
             // 
             // panel2
             // 
@@ -326,7 +326,7 @@
             this.button5.TabIndex = 30;
             this.button5.Text = "Delete";
             this.button5.UseVisualStyleBackColor = true;
-            this.button5.Click += new System.EventHandler(this.button5_Click);
+            this.button5.Click += new System.EventHandler(this.AuthorDelete5_Click);
             // 
             // label9
             // 
@@ -450,7 +450,7 @@
             this.lblPhone.Tag = "phone";
             this.lblPhone.Text = "Phone";
             this.lblPhone.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.lblPhone.Click += new System.EventHandler(this.MyButton_Click);
+            this.lblPhone.Click += new System.EventHandler(this.BtnTitle_Click);
             // 
             // panel3
             // 
@@ -504,7 +504,7 @@
             this.button1.TabIndex = 21;
             this.button1.Text = "Delete";
             this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.button1.Click += new System.EventHandler(this.PhoneDelete_Click);
             // 
             // label3
             // 
@@ -637,6 +637,7 @@
             this.lblAnchorFormRightBottom.TabIndex = 6;
             this.lblAnchorFormRightBottom.Text = "A1";
             this.lblAnchorFormRightBottom.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblAnchorFormRightBottom.Visible = false;
             // 
             // panel4
             // 
@@ -672,7 +673,7 @@
             // button9
             // 
             this.button9.Font = new System.Drawing.Font("新細明體", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.button9.Location = new System.Drawing.Point(431, 19);
+            this.button9.Location = new System.Drawing.Point(809, 13);
             this.button9.Name = "button9";
             this.button9.Size = new System.Drawing.Size(117, 44);
             this.button9.TabIndex = 7;
