@@ -8,7 +8,10 @@ namespace chapter9example3and4.myDTO
     abstract class DTOFactory
     {
         protected delegate void OverrideHandle(short offset);
+        protected delegate void OverrideHandle2();
         protected event OverrideHandle ArrayIndexTextBoxAutoResizeHandle;
+        protected static event OverrideHandle2 SetDefaultTxtIndexHandle;
+        protected static event OverrideHandle2 SetDefaultTextBoxDataInfoHandle;
 
         public TextBox TxtIndex { get; protected set; }
 
@@ -82,6 +85,17 @@ namespace chapter9example3and4.myDTO
             }
             return index;
         }
+
+        public static void SetDefaultTextBoxDataInfos()
+        {
+            SetDefaultTxtIndexHandle?.Invoke();
+            SetDefaultTextBoxDataInfoHandle?.Invoke();
+        }
+        protected void SetDefaultTxtIndex()
+        {
+            TxtIndex.Text = "2";
+        }
+
         public void ArrayIndexTextBoxAutoResize() { ArrayIndexTextBoxAutoResizeHandle?.Invoke(0); }
         public short ArrayIndexTextBoxAutoResize(short offset, int max)
         {

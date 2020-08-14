@@ -332,7 +332,7 @@
             // 
             this.label9.BackColor = System.Drawing.SystemColors.ControlLight;
             this.label9.Font = new System.Drawing.Font("新細明體", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.label9.Location = new System.Drawing.Point(42, 202);
+            this.label9.Location = new System.Drawing.Point(42, 198);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(61, 39);
             this.label9.TabIndex = 19;
@@ -378,7 +378,7 @@
             // txtEmail
             // 
             this.txtEmail.Font = new System.Drawing.Font("新細明體", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.txtEmail.Location = new System.Drawing.Point(109, 202);
+            this.txtEmail.Location = new System.Drawing.Point(109, 198);
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(152, 30);
             this.txtEmail.TabIndex = 18;
@@ -631,7 +631,7 @@
             this.lblAnchorFormRightBottom.BackColor = System.Drawing.Color.White;
             this.lblAnchorFormRightBottom.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblAnchorFormRightBottom.Font = new System.Drawing.Font("新細明體", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.lblAnchorFormRightBottom.Location = new System.Drawing.Point(1074, 440);
+            this.lblAnchorFormRightBottom.Location = new System.Drawing.Point(1077, 430);
             this.lblAnchorFormRightBottom.Name = "lblAnchorFormRightBottom";
             this.lblAnchorFormRightBottom.Size = new System.Drawing.Size(38, 41);
             this.lblAnchorFormRightBottom.TabIndex = 6;

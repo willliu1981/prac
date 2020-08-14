@@ -1,14 +1,11 @@
-﻿using System;
+﻿using chapter9example3and4.myClass;
+using System;
 using System.Collections.Generic;
 
 namespace chapter9example3and4
 {
-    public class Phone
+    class Phone : Card
     {
-        public static int Max
-        {
-            get { return Instance.Count; }
-        }
         private static Dictionary<Int16, Phone> _instance;
         public static Dictionary<Int16, Phone> Instance
         {
@@ -28,13 +25,14 @@ namespace chapter9example3and4
         }
         public string Tag { get; private set; }
 
-        public string HomrPhone { get; private set; }
-        public string OfficePhone { get;private set; }
+        public string HomePhone { get; private set; }
+        public string OfficePhone { get; private set; }
 
         public string CellPhone { get; private set; }
 
         private Phone()
         {
+            HomePhone = "";
         }
 
         public static Phone GetPhone(short index)
@@ -51,25 +49,25 @@ namespace chapter9example3and4
         {
             Phone p = new Phone();
             p.Tag = "David";
-            p.HomrPhone = "03-778899";
+            p.HomePhone = "03-778899";
             p.OfficePhone = "02-12125656";
             p.CellPhone = "0988116688";
-            Instance.Add(1, p);
+            SetPhone(1, p.Tag, p.HomePhone, p.OfficePhone, p.CellPhone);
             p = new Phone();
             p.Tag = "Mary";
-            p.HomrPhone = "06-232323";
+            p.HomePhone = "06-232323";
             p.OfficePhone = "04-876543";
             p.CellPhone = "0911223344";
-            Instance.Add(2, p);
+            SetPhone(2, p.Tag, p.HomePhone, p.OfficePhone, p.CellPhone);
             p = new Phone();
             p.Tag = "John";
-            p.HomrPhone = "038-543211";
+            p.HomePhone = "038-543211";
             p.OfficePhone = "03-969696";
             p.CellPhone = "0932565656";
-            Instance.Add(3, p);
+            SetPhone(3, p.Tag, p.HomePhone, p.OfficePhone, p.CellPhone);
         }
 
-        public static void SetPhone(short index,string tag, string home, string office, string cellphone)
+        public static void SetPhone(short index, string tag, string home, string office, string cellphone)
         {
             Phone phone;
             if (!Instance.TryGetValue(index, out phone))
@@ -77,8 +75,9 @@ namespace chapter9example3and4
                 phone = new Phone();
                 Instance.Add(index, phone);
             }
+            if (index > Max) Max = index;
             phone.Tag = tag;
-            phone.HomrPhone = home;
+            phone.HomePhone = home;
             phone.OfficePhone = office;
             phone.CellPhone = cellphone;
         }
@@ -97,7 +96,7 @@ namespace chapter9example3and4
         }
         public override string ToString()
         {
-            return this.HomrPhone;
+            return ""+Tag;
         }
     }
 }

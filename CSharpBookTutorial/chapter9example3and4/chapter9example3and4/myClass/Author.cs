@@ -1,19 +1,13 @@
-﻿using System;
+﻿using chapter9example3and4.myClass;
+using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Diagnostics;
-using System.Linq;
 
 namespace chapter9example3and4
 {
-    public class Author
+    class Author : Card
     {
-        public static int Max
-        {
-            get { return Instance.Count; }
-        }
         private static Dictionary<Int16, Author> _instance;
-        public  static Dictionary<Int16, Author> Instance
+        public static Dictionary<Int16, Author> Instance
         {
             get
             {
@@ -36,6 +30,7 @@ namespace chapter9example3and4
         private Author()
         {
             Phone = Phone.CreateEmptyInstance();
+            Name = "";
         }
 
         public static Author GetAuthor(short index)
@@ -54,17 +49,17 @@ namespace chapter9example3and4
             a.Name = "David";
             a.Phone = Phone.GetPhone(1);
             a.Email = "yyy@xxx.com";
-            Instance.Add(1, a);
+            SetAuthor(1, a.Name, a.Phone, a.Email);
             a = new Author();
             a.Name = "Mary";
             a.Phone = Phone.GetPhone(2);
             a.Email = "ccc@fff.com";
-            Instance.Add(2, a);
+            SetAuthor(2, a.Name, a.Phone, a.Email);
             a = new Author();
             a.Name = "John";
             a.Phone = Phone.GetPhone(3);
             a.Email = "ddd@eee.com";
-            Instance.Add(3, a);
+            SetAuthor(3, a.Name, a.Phone, a.Email);
         }
 
         public static void SetAuthor(short index, string name, Phone phone, string email)
@@ -75,6 +70,7 @@ namespace chapter9example3and4
                 author = new Author();
                 Instance.Add(index, author);
             }
+            if (index > Max) Max = index;
             author.Name = name;
             author.Phone = phone;
             author.Email = email;
@@ -93,22 +89,9 @@ namespace chapter9example3and4
             return new Author();
         }
 
-        public static BindingList<Author> ToBindingList()
-        {
-            ////BindingList<Author> list = new BindingList<Author>(Instance.ToList<Author>());
-            //Dictionary<int, int> dic = new Dictionary<int, int>();
-            //dic.ToList<KeyValuePair<int, int>>();
-
-            //list.Clear();
-            //List<Author> myList = Instance.Values;
-
-            //return Instance
-            return null;
-        }
-
         public override string ToString()
         {
-            return this.Name;
+            return ""+Name;
         }
     }
 }

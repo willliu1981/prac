@@ -1,20 +1,12 @@
-﻿using System;
+﻿using chapter9example3and4.myClass;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
-using System.Net;
-using System.Security.Principal;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace chapter9example3and4
 {
-    class Book
+    class Book : Card
     {
-        public static int Max
-        {
-            get { return Instance.Count; }
-        }
         private static Dictionary<Int16, Book> _instance;
         public static Dictionary<Int16, Book> Instance
         {
@@ -66,15 +58,15 @@ namespace chapter9example3and4
             Book b = new Book();
             b.No = "b1234";
             b.Title = "C#";
-            b.Author = Author.GetAuthor(1);
+            b.Author = Author.GetAuthor(2);
             b.Price = 520;
-            Instance.Add(1, b);
+            SetBook(1, b.No, b.Title, b.Author, b.Price);
             b = new Book();
             b.No = "b1235";
             b.Title = "Java";
-            b.Author = Author.GetAuthor(2);
+            b.Author = Author.GetAuthor(1);
             b.Price = 620;
-            Instance.Add(2, b);
+            SetBook(2, b.No, b.Title, b.Author, b.Price);
         }
 
         public static void SetBook(short index, string no, string title, Author author, string price)
@@ -99,6 +91,7 @@ namespace chapter9example3and4
                 book = new Book();
                 Instance.Add(index, book);
             }
+            if (index > Max) Max = index;
             book.No = no;
             book.Title = title;
             book.Author = author;

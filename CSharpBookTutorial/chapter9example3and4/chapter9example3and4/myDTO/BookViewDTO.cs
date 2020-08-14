@@ -1,4 +1,6 @@
 ﻿using chapter9example3and4.myDTO;
+using System.Collections.Generic;
+using System.Diagnostics;
 using System.Windows.Forms;
 
 namespace chapter9example3and4
@@ -7,20 +9,23 @@ namespace chapter9example3and4
     {
         public TextBox TxtNo { get; private set; }
         public TextBox TxtTitle { get; private set; }
+        public ListBox LstAuthor { get; private set; }
         public TextBox TxtPrice { get; private set; }
 
 
-        public BookViewDTO(TextBox txtIndex, TextBox txtNo, TextBox txtTitle, TextBox txtPrice) : base(txtIndex)
+        public BookViewDTO(TextBox txtIndex, TextBox txtNo, TextBox txtTitle, ListBox lstAuthor, TextBox txtPrice) : base(txtIndex)
         {
             ArrayIndexTextBoxAutoResizeHandle += ArrayIndexTextBoxAutoResize;
+            SetDefaultTxtIndexHandle += SetDefaultTxtIndex;
+            SetDefaultTextBoxDataInfoHandle += SetTextBoxDataInfo;
             TxtNo = txtNo;
             TxtTitle = txtTitle;
+            LstAuthor = lstAuthor;
             TxtPrice = txtPrice;
         }
         public void ArrayIndexTextBoxAutoResize(short offset)
         {
-            short targetIdx;
-            if ((targetIdx = ArrayIndexTextBoxAutoResize(offset, Book.Max)) != -1)
+            if (ArrayIndexTextBoxAutoResize(offset, Book.Max) != -1)
             {
                 SetTextBoxDataInfo();
             }
@@ -28,10 +33,10 @@ namespace chapter9example3and4
 
         public void SetData()
         {
-            Author author = Author.GetAuthor(1);//for debug
             short index = TransformIndex(TxtIndex, true);
             if (index != -1)
             {
+                Author author =((KeyValuePair<short,Author>) LstAuthor.SelectedItem).Value;
                 Book.SetBook(index, TxtNo.Text.ToString(), TxtTitle.Text.ToString(), author, TxtPrice.Text.ToString());
             }
         }
@@ -49,11 +54,8 @@ namespace chapter9example3and4
             short index = TransformIndex(TxtIndex);
             TxtNo.Text = Book.GetBook(index).No;
             TxtTitle.Text = Book.GetBook(index).Title;
-            //lstAuthor.Text = Book.GetBook(index).Author.Name;
+            LstAuthor.Text = Book.GetBook(index).Author.Name;
             TxtPrice.Text = Book.GetBook(index).Price.ToString();
         }
-
-
     }
-
 }

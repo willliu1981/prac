@@ -48,6 +48,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="myClass\Author.cs" />
+    <Compile Include="myClass\Card.cs" />
     <Compile Include="myDTO\AuthorViewDTO.cs" />
     <Compile Include="myDTO\BookViewDTO.cs" />
     <Compile Include="myClass\Book.cs" />

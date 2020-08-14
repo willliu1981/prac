@@ -30,17 +30,20 @@ namespace chapter9example3and4
         {
             BindingList<KeyValuePair<short, Author>> blstAuthor
                 = new BindingList<KeyValuePair<short, Author>>(Author.Instance.ToList<KeyValuePair<short, Author>>());
+            blstAuthor.Add(new  KeyValuePair<short, Author>(-1,Author.CreateEmptyInstance()));
             lstAuthor.DisplayMember = "Value";
             lstAuthor.DataSource = blstAuthor;
             BindingList<KeyValuePair<short, Phone>> blstPhone
                 = new BindingList<KeyValuePair<short, Phone>>(Phone.Instance.ToList<KeyValuePair<short, Phone>>());
+            blstPhone.Add(new KeyValuePair<short, Phone>(-1, Phone.CreateEmptyInstance()));
             lstPhone.DisplayMember = "Value";
             lstPhone.DataSource = blstPhone;
             DTOFactory.CreateDTO(
-                new KeyValuePair<View, IDTO>(View.Book, new BookViewDTO(txtBookIndex, txtNo, txtTitle, txtPrice)),
-                new KeyValuePair<View, IDTO>(View.Author, new AuthorViewDTO(txtAuthorIndex, txtName, txtEmail, blstAuthor)),
+                new KeyValuePair<View, IDTO>(View.Book, new BookViewDTO(txtBookIndex, txtNo, txtTitle,lstAuthor, txtPrice)),
+                new KeyValuePair<View, IDTO>(View.Author, new AuthorViewDTO(txtAuthorIndex, txtName,lstPhone, txtEmail, blstAuthor)),
                 new KeyValuePair<View, IDTO>(View.Phone, new PhoneViewDTO(txtPhoneIndex, txtTag, txtHomePhone,
                 txtOfficePhone, txtCellPhone, blstPhone)));
+            DTOFactory.SetDefaultTextBoxDataInfos();
             myAnchor = new[] { lblAnchorFormRightBottom };
             this.SetClientSizeCore(myAnchor[0].Left, myAnchor[0].Top);
             myPanel = new Panel[] { panel1, panel2, panel3 };
@@ -208,7 +211,12 @@ namespace chapter9example3and4
 
         private void Debug_Click(object sender, EventArgs e)
         {
-
+            //KeyValuePair<short, Author> pair = (KeyValuePair<short, Author>)lstAuthor.SelectedItem ;
+            //Debug.WriteLine(pair.Value.Email);
+            //DTOFactory.SetDefaultTextBoxDataInfos();
+            
+            Author author = ((KeyValuePair<short, Author>)lstAuthor.SelectedItem).Value;
+            Debug.WriteLine("test: "+ lstAuthor.Text);
         }
 
 
