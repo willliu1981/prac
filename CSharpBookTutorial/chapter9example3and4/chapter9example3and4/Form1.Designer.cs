@@ -76,7 +76,7 @@
             this.txtHomePhone = new System.Windows.Forms.TextBox();
             this.lblAnchorFormRightBottom = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtShow = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.button9 = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
@@ -642,21 +642,21 @@
             // panel4
             // 
             this.panel4.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.panel4.Controls.Add(this.textBox1);
+            this.panel4.Controls.Add(this.txtShow);
             this.panel4.Controls.Add(this.label4);
             this.panel4.Location = new System.Drawing.Point(548, 63);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(504, 336);
             this.panel4.TabIndex = 4;
             // 
-            // textBox1
+            // txtShow
             // 
-            this.textBox1.Font = new System.Drawing.Font("新細明體", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.textBox1.Location = new System.Drawing.Point(36, 82);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(426, 220);
-            this.textBox1.TabIndex = 4;
+            this.txtShow.Font = new System.Drawing.Font("新細明體", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.txtShow.Location = new System.Drawing.Point(36, 82);
+            this.txtShow.Multiline = true;
+            this.txtShow.Name = "txtShow";
+            this.txtShow.Size = new System.Drawing.Size(426, 220);
+            this.txtShow.TabIndex = 4;
             // 
             // label4
             // 
@@ -724,7 +724,7 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label lblAnchorFormRightBottom;
         private System.Windows.Forms.Panel panel4;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtShow;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.TextBox txtPrice;

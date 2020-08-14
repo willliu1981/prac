@@ -43,6 +43,7 @@ namespace chapter9example3and4
                 new KeyValuePair<View, IDTO>(View.Author, new AuthorViewDTO(txtAuthorIndex, txtName,lstPhone, txtEmail, blstAuthor)),
                 new KeyValuePair<View, IDTO>(View.Phone, new PhoneViewDTO(txtPhoneIndex, txtTag, txtHomePhone,
                 txtOfficePhone, txtCellPhone, blstPhone)));
+            DTOFactory.CreateTxtShow(txtShow);
             DTOFactory.SetDefaultTextBoxDataInfos();
             myAnchor = new[] { lblAnchorFormRightBottom };
             this.SetClientSizeCore(myAnchor[0].Left, myAnchor[0].Top);
@@ -129,17 +130,17 @@ namespace chapter9example3and4
             DTOFactory.GetDTO(View.Phone).RemoveData();
         }
 
-        private void BtnScroll_Click(object sender, EventArgs e, View view)
+        private void BtnFlip_Click(object sender, EventArgs e, View view)
         {
             try
             {
                 switch ((sender as Button).Tag.ToString())
                 {
                     case "prev":
-                        DTOFactory.GetDTO(view).ArrayIndexTextBoxAutoResize(-1);
+                        DTOFactory.GetDTO(view).SetOffset(-1).Flip();
                         break;
                     case "next":
-                        DTOFactory.GetDTO(view).ArrayIndexTextBoxAutoResize(1);
+                        DTOFactory.GetDTO(view).SetOffset(1).Flip();
                         break;
                     default:
                         break;
@@ -148,23 +149,23 @@ namespace chapter9example3and4
             catch (Exception ex)
             {
                 Debug.WriteLine(ex.StackTrace);
-                DTOFactory.GetDTO(view).ArrayIndexTextBoxAutoResize();
+                DTOFactory.GetDTO(view).Flip();
             }
         }
 
         private void BtnBookScroll_Click(object sender, EventArgs e)
         {
-            BtnScroll_Click(sender, e, View.Book);
+            BtnFlip_Click(sender, e, View.Book);
         }
 
         private void BtnAuthorScroll_Click(object sender, EventArgs e)
         {
-            BtnScroll_Click(sender, e, View.Author);
+            BtnFlip_Click(sender, e, View.Author);
         }
 
         private void BtnPhoneScroll_Click(object sender, EventArgs e)
         {
-            BtnScroll_Click(sender, e, View.Phone);
+            BtnFlip_Click(sender, e, View.Phone);
         }
 
         private void TextBoxEnterDown(object sender, KeyEventArgs e)
@@ -174,13 +175,13 @@ namespace chapter9example3and4
                 switch ((sender as TextBox).Tag)
                 {
                     case "book":
-                        DTOFactory.GetDTO(View.Book).SetTextBoxDataInfo();
+                        DTOFactory.GetDTO(View.Book).Flip();
                         break;
                     case "author":
-                        DTOFactory.GetDTO(View.Author).SetTextBoxDataInfo();
+                        DTOFactory.GetDTO(View.Author).Flip();
                         break;
                     case "phone":
-                        DTOFactory.GetDTO(View.Phone).SetTextBoxDataInfo();
+                        DTOFactory.GetDTO(View.Phone).Flip();
                         break;
                     default:
                         break;
@@ -188,35 +189,16 @@ namespace chapter9example3and4
             }
         }
 
-        private short TransformIndex(string value)
-        {
-            return TransformIndex(value, 0);
-        }
-
-        private short TransformIndex(string value, int increase)
-        {
-            Int16 index;
-            try
-            {
-                index = Convert.ToInt16(value);
-                index += Convert.ToInt16(increase);
-            }
-            catch (Exception ex)
-            {
-                Debug.WriteLine(ex.StackTrace);
-                index = 1;
-            }
-            return index;
-        }
-
         private void Debug_Click(object sender, EventArgs e)
         {
             //KeyValuePair<short, Author> pair = (KeyValuePair<short, Author>)lstAuthor.SelectedItem ;
             //Debug.WriteLine(pair.Value.Email);
             //DTOFactory.SetDefaultTextBoxDataInfos();
-            
-            Author author = ((KeyValuePair<short, Author>)lstAuthor.SelectedItem).Value;
-            Debug.WriteLine("test: "+ lstAuthor.Text);
+
+            //Author author = ((KeyValuePair<short, Author>)lstAuthor.SelectedItem).Value;
+            //Debug.WriteLine("test: "+ lstAuthor.Text);
+            DTOFactory.GetDTO(View.Book).SetOffset(2).Flip();
+
         }
 
 

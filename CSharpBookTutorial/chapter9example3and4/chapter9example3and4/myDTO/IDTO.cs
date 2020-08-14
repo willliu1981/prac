@@ -2,11 +2,10 @@
 {
     interface IDTO
     {
-
-        void ArrayIndexTextBoxAutoResize();
-        void ArrayIndexTextBoxAutoResize( short offset);
-        void SetTextBoxDataInfo();
+        void Flip();
         void SetData();
         void RemoveData();
+        void Focus();
+        DTOFactory SetOffset(short offset);
     }
 }

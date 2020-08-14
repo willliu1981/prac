@@ -5,57 +5,76 @@ using System.Windows.Forms;
 
 namespace chapter9example3and4
 {
-    class BookViewDTO : DTOFactory, IDTO
+    class BookViewDTO : DTOFactory
     {
         public TextBox TxtNo { get; private set; }
         public TextBox TxtTitle { get; private set; }
         public ListBox LstAuthor { get; private set; }
         public TextBox TxtPrice { get; private set; }
 
-
         public BookViewDTO(TextBox txtIndex, TextBox txtNo, TextBox txtTitle, ListBox lstAuthor, TextBox txtPrice) : base(txtIndex)
         {
-            ArrayIndexTextBoxAutoResizeHandle += ArrayIndexTextBoxAutoResize;
-            SetDefaultTxtIndexHandle += SetDefaultTxtIndex;
-            SetDefaultTextBoxDataInfoHandle += SetTextBoxDataInfo;
+            SetDefaultTextBoxDataHandle += SetDefaultTxtIndex;
+            SetDefaultTextBoxDataHandle += SetTextBoxDataInfo;
+            SetDataInfoHandle += SetTextBoxDataInfo;
+            ShowHandle += Show;
+
             TxtNo = txtNo;
             TxtTitle = txtTitle;
             LstAuthor = lstAuthor;
             TxtPrice = txtPrice;
         }
-        public void ArrayIndexTextBoxAutoResize(short offset)
+
+        public override DTOFactory SetOffset(short offset)
         {
-            if (ArrayIndexTextBoxAutoResize(offset, Book.Max) != -1)
-            {
-                SetTextBoxDataInfo();
-            }
+            DataIndexResize(offset, Book.Max);
+            return this;
         }
 
-        public void SetData()
+        public override void SetData()
         {
             short index = TransformIndex(TxtIndex, true);
             if (index != -1)
             {
                 Author author =((KeyValuePair<short,Author>) LstAuthor.SelectedItem).Value;
                 Book.SetBook(index, TxtNo.Text.ToString(), TxtTitle.Text.ToString(), author, TxtPrice.Text.ToString());
+                base.SetData();
             }
         }
-        public void RemoveData()
+        public override void RemoveData()
         {
             short index = TransformIndex(TxtIndex, true);
             if (index != -1)
             {
                 Book.RemoveBook(index);
+                Show();
             }
         }
 
-        public void SetTextBoxDataInfo()
+        protected override void SetTextBoxDataInfo()
         {
             short index = TransformIndex(TxtIndex);
             TxtNo.Text = Book.GetBook(index).No;
             TxtTitle.Text = Book.GetBook(index).Title;
             LstAuthor.Text = Book.GetBook(index).Author.Name;
             TxtPrice.Text = Book.GetBook(index).Price.ToString();
+        }
+
+        protected override void Show()
+        {
+            short index = TransformIndex(TxtIndex);
+            TxtShow.Text = string.Format("no: {0,-10}\ttitle: {1,-10}\t$: {2,-10} \r\n" +
+                "author: {3} \r\n" +
+                "email: {4} \r\n" +
+                "H-Phone: {5} \r\n" +
+                "O-Phone: {6} \r\n" +
+                "C-Phone:{7}" ,
+                Book.GetBook(index).No, Book.GetBook(index).Title, Book.GetBook(index).Price,
+                Book.GetBook(index).Author.Name,
+                Book.GetBook(index).Author.Email,
+                Book.GetBook(index).Author.Phone.HomePhone,
+                Book.GetBook(index).Author.Phone.OfficePhone,
+                Book.GetBook(index).Author.Phone.CellPhone);
         }
     }
 }

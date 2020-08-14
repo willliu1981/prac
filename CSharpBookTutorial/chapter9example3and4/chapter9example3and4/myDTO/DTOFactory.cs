@@ -5,21 +5,38 @@ using System.Windows.Forms;
 
 namespace chapter9example3and4.myDTO
 {
-    abstract class DTOFactory
+    abstract class DTOFactory : Event, IDTO
     {
-        protected delegate void OverrideHandle(short offset);
-        protected delegate void OverrideHandle2();
-        protected event OverrideHandle ArrayIndexTextBoxAutoResizeHandle;
-        protected static event OverrideHandle2 SetDefaultTxtIndexHandle;
-        protected static event OverrideHandle2 SetDefaultTextBoxDataInfoHandle;
 
-        public TextBox TxtIndex { get; protected set; }
+        protected static event OverrideHandle2 SetDefaultTextBoxDataHandle;
+        protected event OverrideHandle2 SetDataInfoHandle;
+        protected event OverrideHandle2 ShowHandle;
 
-        public DTOFactory(TextBox txtIndex)
+        protected TextBox TxtIndex { get; set; }
+        protected short DataIndexMax { get; set; }
+
+        protected static TextBox _txtShow;
+        protected static TextBox TxtShow
+        {
+            get
+            {
+                if (_txtShow == null)
+                {
+                    _txtShow = new TextBox();
+                }
+                return _txtShow;
+            }
+            private set { _txtShow = value; }
+        }
+        protected DTOFactory(TextBox txtIndex)
         {
             TxtIndex = txtIndex;
         }
 
+        public static void CreateTxtShow(TextBox txtShow)
+        {
+            TxtShow = txtShow;
+        }
         private static Dictionary<View, IDTO> dtoPattern;
         public static void CreateDTO(params KeyValuePair<View, IDTO>[] pairs)
         {
@@ -34,24 +51,20 @@ namespace chapter9example3and4.myDTO
         {
             return dtoPattern[view];
         }
-        public static short TransformIndex(TextBox value, bool verify)
+
+        protected static short TransformIndex(TextBox value, bool verify)
         {
             return TransformIndex(value.Text.ToString(), 0, verify);
         }
-        public static short TransformIndex(TextBox value)
+        protected static short TransformIndex(TextBox value)
         {
             return TransformIndex(value.Text.ToString(), 0, false);
         }
-
-        public static short TransformIndex(string value)
-        {
-            return TransformIndex(value, 0, false);
-        }
-        public static short TransformIndex(TextBox value, short increase)
+        protected static short TransformIndex(TextBox value, short increase)
         {
             return TransformIndex(value.Text.ToString(), increase, false);
         }
-        public static short TransformIndex(string value, short increase, bool verify)
+        protected static short TransformIndex(string value, short increase, bool verify)
         {
             short myValue = TransformIndex(value, increase);
             if (verify)
@@ -70,7 +83,7 @@ namespace chapter9example3and4.myDTO
             }
             return myValue;
         }
-        public static short TransformIndex(string value, short increase)
+        protected static short TransformIndex(string value, short increase)
         {
             Int16 index;
             try
@@ -88,16 +101,21 @@ namespace chapter9example3and4.myDTO
 
         public static void SetDefaultTextBoxDataInfos()
         {
-            SetDefaultTxtIndexHandle?.Invoke();
-            SetDefaultTextBoxDataInfoHandle?.Invoke();
+            SetDefaultTextBoxDataHandle?.Invoke();
         }
         protected void SetDefaultTxtIndex()
         {
-            TxtIndex.Text = "2";
+            TxtIndex.Text = "1";
         }
 
-        public void ArrayIndexTextBoxAutoResize() { ArrayIndexTextBoxAutoResizeHandle?.Invoke(0); }
-        public short ArrayIndexTextBoxAutoResize(short offset, int max)
+        abstract protected void SetTextBoxDataInfo();
+        abstract protected void Show();
+        public void Flip()
+        {
+            SetDataInfoHandle?.Invoke();
+            ShowHandle?.Invoke();
+        }
+        protected void DataIndexResize(short offset, int max)
         {
             Int16 targetIdx = -1;
             if (TxtIndex != null)
@@ -113,8 +131,14 @@ namespace chapter9example3and4.myDTO
                 }
                 TxtIndex.Text = targetIdx.ToString();
             }
-            return targetIdx;
         }
 
+        public virtual void SetData() { ShowHandle?.Invoke(); }
+        abstract public void RemoveData();
+        abstract public DTOFactory SetOffset(short offset);
+
+        public void Focus()
+        {
+        }
     }
 }

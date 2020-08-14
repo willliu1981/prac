@@ -62,6 +62,7 @@
     <Compile Include="MyClass.cs" />
     <Compile Include="myClass\Phone.cs" />
     <Compile Include="myDTO\DTOFactory.cs" />
+    <Compile Include="myDTO\Event.cs" />
     <Compile Include="myDTO\IDTO.cs" />
     <Compile Include="myDTO\PhoneViewDTO.cs" />
     <Compile Include="Program.cs" />
